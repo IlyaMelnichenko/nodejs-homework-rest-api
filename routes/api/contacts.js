@@ -9,9 +9,7 @@ const {
 const contactSchema = require('../../validation/validation')
 
 const router = express.Router();
-const contactValidator = schema => data => {
-  return schema.validate(data, { abortEarly: false });
-};
+
 router.get("/", async (req, res, next) => {
   try {
     const contacts = await listContacts();
@@ -34,7 +32,7 @@ router.get("/:contactId", async (req, res, next) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = contactValidate(req.body);
+  const { error } = contactSchema.validate(req.body);
 
   if (typeof error !== "undefined") {
     return res
