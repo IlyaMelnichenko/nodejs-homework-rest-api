@@ -8,4 +8,4 @@ const contactSchema = joi.object({
 
 
 
-module.exports=contactSchema;
+module.exports={contactSchema} 
